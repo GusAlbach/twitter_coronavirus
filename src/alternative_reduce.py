@@ -46,6 +46,7 @@ ax.plot(DOY ,value ,label = key)
 
 #labels and such
 #what even was args.percent
+ax.xaxis.set_major_locator(matplotlib.dates.MonthLocator(interval=3))
 ax.set_xlabel("dates")
 ax.set_ylabel('num. of tweets')
 ax.legend()
