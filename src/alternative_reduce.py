@@ -21,7 +21,7 @@ import glob
 
 # original file path didn't remember each date, here we split and then get the root of file path before cutting out date from it 
 # load each of the input paths
-paths = glob.glob('outputs/geoTwitter*y')
+paths = glob.glob('outputs/geoTwitter*country')
 total = defaultdict(lambda: Counter())
 for path in paths:
     with open(path) as f:
