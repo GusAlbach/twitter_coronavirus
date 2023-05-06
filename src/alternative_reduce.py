@@ -18,7 +18,7 @@ import matplotlib.pyplot
 import matplotlib.dates
 from datetime import datetime
 import glob
-print("print(args.keys)=", print(args.keys))
+
 # needed to change method of inputting file 
 # load each of the input paths
 paths = glob.glob('outputs/geoTwitter*.lang')
@@ -29,23 +29,26 @@ for path in paths:
         date = os.path.splitext(os.path.basename(path))[0][10:18]
         tmp = json.load(f)
         for key in args.keys:
-            print("print(key)=", print(key))
             if key in tmp:
                 if key not in total:
-                    print("print(keynot in total)=", print(key))
                     total[key] = dict()
                 if date not in total[key]:
                     total[key][date] = []
                 totals = sum(tmp[key].values())
                 total[key][date].append(totals)
 
+print("print(total)=", print(total))
 #plotting below
 fig, ax = matplotlib.pyplot.subplots()
 for key in args.keys:
+    print("print(key)=", print(key))
     dates = sorted(total[key].keys())
+    print("print(dates)=", print(dates))
     value = [sum(total[key][date]) for date in dates]
+    print("print(value)=", print(value))
     DOY = [datetime.strptime(date, '%y-%m-%d') for date in dates]
-ax.plot(DOY ,value ,label = key)
+    print("print(DOY)=", print(DOY))
+ax.plot(dates ,value ,label = key)
 
 #labels and such
 #what even was args.percent
