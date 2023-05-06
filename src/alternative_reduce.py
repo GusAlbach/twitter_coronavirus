@@ -48,7 +48,7 @@ for key in args.keys:
     print("print(value)=", print(value))
     DOY = [datetime.strptime(date, '%y-%m-%d') for date in dates]
     print("print(DOY)=", print(DOY))
-ax.plot(dates ,value ,label = key)
+    ax.plot(DOY ,value ,label = key)
 
 #labels and such
 #what even was args.percent
