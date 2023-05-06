@@ -21,7 +21,7 @@ import glob
 
 # needed to change method of inputting file 
 # load each of the input paths
-paths = glob.glob('outputs/geoTwitter*country')
+paths = glob.glob('outputs/geoTwitter*.lang')
 total = defaultdict(lambda: Counter())
 D = dict()
 for path in paths:
