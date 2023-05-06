@@ -19,10 +19,11 @@ import matplotlib.dates
 from datetime import datetime
 import glob
 
-# original file path didn't remember each date, here we split and then get the root of file path before cutting out date from it 
+# needed to change method of inputting file 
 # load each of the input paths
 paths = glob.glob('outputs/geoTwitter*country')
 total = defaultdict(lambda: Counter())
+D = dict()
 for path in paths:
     with open(path) as f:
         date = os.path.splitext(os.path.basename(path))[0][10:18]
@@ -30,8 +31,8 @@ for path in paths:
         for key in args.keys:
             if key in tmp:
                 if key not in total:
-                    total[key] = {}
-                if key not in total[key]:
+                    total[key] = dict()
+                if date not in total[key]:
                     total[key][date] = []
                 totals = sum(tmp[key].values())
                 total[key][date].append(totals)
@@ -46,7 +47,7 @@ ax.plot(DOY ,value ,label = key)
 
 #labels and such
 #what even was args.percent
-ax.xaxis.set_major_locator(matplotlib.dates.MonthLocator(interval=3))
+ax.xaxis.set_major_locator(matplotlib.dates.MonthLocator(interval=4))
 ax.xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%y-%m-%d'))
 ax.set_xlabel("dates")
 ax.set_ylabel('num. of tweets')
