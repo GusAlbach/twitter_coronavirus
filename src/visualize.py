@@ -34,6 +34,8 @@ for k,v in items:
 top_ten = items[0:10]
 obs = [x[0] for x in top_ten]
 values = [x[1] for x in top_ten]
+
+# these steps could be counter-productive depending on what 'low to high' means
 obs = obs[::-1]
 values = values[::-1]
 
